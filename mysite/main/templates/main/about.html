@@ -1,0 +1,131 @@
+{% extends 'main/base.html' %}
+{% block title %}О себе — Морозов Д.С.{% endblock %}
+
+{% block content %}
+<div id="top" class="page-header">
+    <h1>Я и моя <span class="accent">страница</span></h1>
+    <p>Личная информация и мои сокурсники</p>
+</div>
+
+<!-- Навигация по закладкам внутри страницы -->
+<nav class="anchor-nav">
+    <a href="#section1" class="anchor-btn">📋 Раздел 1 — О себе</a>
+    <a href="#section2" class="anchor-btn">📋 Раздел 2 — Контакты</a>
+    <a href="#classmates" class="anchor-btn">👥 Сокурсники</a>
+    <a href="#top" class="anchor-btn">⬆ К началу</a>
+</nav>
+
+<!-- Раздел 1 -->
+<section id="section1" class="section">
+    <h2 class="section-title">Раздел 1 — О себе</h2>
+
+    <div class="profile-block">
+        <div class="profile-avatar">👤</div>
+        <div class="profile-info">
+            <h2>{{ student.full_name }}</h2>
+            <table class="info-table">
+                <tr>
+                    <td>Имя:</td>
+                    <td>{{ student.full_name }}</td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><a href="mailto:{{ student.email }}">{{ student.email }}</a></td>
+                </tr>
+                <tr>
+                    <td>Телефон:</td>
+                    <td>{{ student.phone }}</td>
+                </tr>
+                <tr>
+                    <td>Программа:</td>
+                    <td>Разработка веб-приложений</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Нумерованный список -->
+    <div class="card" style="margin-top:1.5rem">
+        <h3>🔢 Мои интересы (нумерованный список)</h3>
+        <ol style="padding-left:1.4rem;margin-top:1rem;">
+            <li>Программирование на Python</li>
+            <li>Веб-разработка с Django
+                <ul class="nested-list" style="margin-top:0.4rem;">
+                    <li>Шаблоны и маршруты</li>
+                    <li>ORM и базы данных</li>
+                </ul>
+            </li>
+            <li>Изучение CSS и дизайна</li>
+            <li>Алгоритмы и структуры данных</li>
+        </ol>
+    </div>
+
+    <!-- Ненумерованный список -->
+    <div class="card" style="margin-top:1.5rem">
+        <h3>📌 Мои навыки (ненумерованный список)</h3>
+        <ul style="padding-left:1.4rem;margin-top:1rem;">
+            <li>Python 3</li>
+            <li>Django Framework
+                <ul class="nested-list" style="margin-top:0.4rem;">
+                    <li>Templates</li>
+                    <li>Static files</li>
+                    <li>URL routing</li>
+                </ul>
+            </li>
+            <li>HTML / CSS</li>
+            <li>Git & GitHub</li>
+        </ul>
+    </div>
+
+    <a href="#top" class="back-to-top">⬆ К началу страницы</a>
+</section>
+
+<hr class="divider">
+
+<!-- Раздел 2 -->
+<section id="section2" class="section">
+    <h2 class="section-title">Раздел 2 — Контакты</h2>
+
+    <div class="card">
+        <p style="color:var(--text-muted);margin-bottom:1rem;">Вы можете связаться со мной любым удобным способом:</p>
+        <table class="info-table">
+            <tr>
+                <td>📧 Email:</td>
+                <td><a href="mailto:{{ student.email }}">{{ student.email }}</a></td>
+            </tr>
+            <tr>
+                <td>📱 Телефон:</td>
+                <td>{{ student.phone }}</td>
+            </tr>
+            <tr>
+                <td>🌐 GitHub:</td>
+                <td><a href="https://github.com/Kor4yz" target="_blank" rel="noopener">github.com/Kor4yz</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <a href="#top" class="back-to-top">⬆ К началу страницы</a>
+</section>
+
+<hr class="divider">
+
+<!-- Сокурсники -->
+<section id="classmates" class="section">
+    <h2 class="section-title">Мои сокурсники</h2>
+
+    <div class="classmates-grid">
+        {% for c in classmates %}
+        <div class="classmate-card">
+            <div class="classmate-avatar">👤</div>
+            <div class="classmate-info">
+                <h4>{{ c.name }}</h4>
+                <p>📧 {{ c.email }}</p>
+                <p>📱 {{ c.phone }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <a href="#top" class="back-to-top">⬆ К началу страницы</a>
+</section>
+{% endblock %}

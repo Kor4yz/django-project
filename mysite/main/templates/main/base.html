@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Мой сайт{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{% url 'home' %}" class="nav-logo">
+                <span class="logo-icon">◈</span>
+                <span>Морозов Д.С.</span>
+            </a>
+            <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <!-- Текстовые ссылки (открываются в текущем окне) -->
+                <li><a href="{% url 'home' %}" class="nav-link">Главная</a></li>
+                <li><a href="{% url 'about' %}" class="nav-link">О себе</a></li>
+                <li><a href="{% url 'education' %}" class="nav-link">Образование</a></li>
+                <li><a href="{% url 'algorithm' %}" class="nav-link">Задача</a></li>
+                <li><a href="{% url 'gallery' %}" class="nav-link">Галерея</a></li>
+                <!-- Ссылка на закладку внутри страницы -->
+                <li><a href="{% url 'about' %}#classmates" class="nav-link nav-bookmark">Сокурсники ↓</a></li>
+                <!-- Внешние ссылки (открываются в новом окне) -->
+                <li><a href="https://www.python.org" target="_blank" rel="noopener" class="nav-link nav-external">
+                    <img src="{% static 'main/img/python-logo.svg' %}" alt="Python" class="nav-icon" onerror="this.style.display='none'">Python ↗
+                </a></li>
+                <li><a href="https://www.djangoproject.com" target="_blank" rel="noopener" class="nav-link nav-external">Django ↗</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <p>© 2026 Морозов Денис Сергеевич &nbsp;|&nbsp; Разработка веб-приложений</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+        // Подсветка активной ссылки
+        const links = document.querySelectorAll('.nav-link');
+        links.forEach(link => {
+            if (link.href === window.location.href) {
+                link.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

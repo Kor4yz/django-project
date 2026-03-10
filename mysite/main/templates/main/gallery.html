@@ -1,0 +1,96 @@
+{% extends 'main/base.html' %}
+{% block title %}Галерея — Морозов Д.С.{% endblock %}
+
+{% block content %}
+<div id="top" class="page-header">
+    <h1>Моя <span class="accent">галерея</span></h1>
+    <p>Изображения объектов и субъектов с подписями и комментариями</p>
+</div>
+
+<!-- Якорная навигация -->
+<nav class="anchor-nav">
+    <a href="#section1" class="anchor-btn">📋 Раздел 1 — Природа</a>
+    <a href="#section2" class="anchor-btn">📋 Раздел 2 — Технологии</a>
+    <a href="#top" class="anchor-btn">⬆ К началу</a>
+</nav>
+
+<!-- Раздел 1 -->
+<section id="section1" class="section">
+    <h2 class="section-title">Раздел 1 — Природа</h2>
+    <p class="gallery-intro">Подборка фотографий природных объектов и явлений с описанием.</p>
+
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <div class="gallery-img">🌄</div>
+            <div class="gallery-caption">
+                <h4>Закат в горах</h4>
+                <p>Вечерний пейзаж. Горный хребет на закате, тени от вершин создают неповторимую атмосферу.</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <div class="gallery-img">🌊</div>
+            <div class="gallery-caption">
+                <h4>Морской прибой</h4>
+                <p>Волны у берега. Морской прибой в ясный день — символ силы и спокойствия одновременно.</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <div class="gallery-img">🌲</div>
+            <div class="gallery-caption">
+                <h4>Лесная тропа</h4>
+                <p>Осенний лес. Опавшие листья и утренний туман создают сказочную атмосферу.</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <div class="gallery-img">🌌</div>
+            <div class="gallery-caption">
+                <h4>Звёздное небо</h4>
+                <p>Млечный путь. Ночное небо вдали от города — возможность увидеть тысячи звёзд.</p>
+            </div>
+        </div>
+    </div>
+
+    <a href="#top" class="back-to-top">⬆ К началу страницы</a>
+</section>
+
+<hr class="divider">
+
+<!-- Раздел 2 -->
+<section id="section2" class="section">
+    <h2 class="section-title">Раздел 2 — Технологии</h2>
+    <p class="gallery-intro">Фотографии технологических объектов, связанных с обучением и разработкой.</p>
+
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <div class="gallery-img">💻</div>
+            <div class="gallery-caption">
+                <h4>Рабочее место разработчика</h4>
+                <p>Монитор с кодом. Типичное рабочее место программиста — несколько мониторов и чашка кофе.</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <div class="gallery-img">🐍</div>
+            <div class="gallery-caption">
+                <h4>Python — язык программирования</h4>
+                <p>Логотип Python. Один из самых популярных языков для веб-разработки, анализа данных и ИИ.</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <div class="gallery-img">🌐</div>
+            <div class="gallery-caption">
+                <h4>Django Framework</h4>
+                <p>Веб-фреймворк Django. «Фреймворк для перфекционистов с дедлайнами» — мощный инструмент для веба.</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <div class="gallery-img">🗄️</div>
+            <div class="gallery-caption">
+                <h4>База данных</h4>
+                <p>Серверная инфраструктура. Надёжное хранение и управление данными — основа любого веб-приложения.</p>
+            </div>
+        </div>
+    </div>
+
+    <a href="#top" class="back-to-top">⬆ К началу страницы</a>
+</section>
+{% endblock %}

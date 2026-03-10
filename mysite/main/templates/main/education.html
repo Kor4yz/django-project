@@ -1,0 +1,73 @@
+{% extends 'main/base.html' %}
+{% block title %}Образование — Морозов Д.С.{% endblock %}
+
+{% block content %}
+<div id="top" class="page-header">
+    <h1>Я и моя <span class="accent">образовательная программа</span></h1>
+    <p>Информация о программе, руководителе и менеджере</p>
+</div>
+
+<!-- Якорная навигация -->
+<nav class="anchor-nav">
+    <a href="#section1" class="anchor-btn">📋 Раздел 1 — Программа</a>
+    <a href="#top" class="anchor-btn">⬆ К началу</a>
+</nav>
+
+<!-- Раздел 1: Программа -->
+<section id="section1" class="section">
+    <h2 class="section-title">Раздел 1 — Программа</h2>
+
+    <div class="education-grid">
+        <div class="edu-card">
+            <div class="label">🎓 Название программы</div>
+            <h3 style="font-family:var(--font-display);font-size:1.4rem;">{{ program.name }}</h3>
+        </div>
+        <div class="edu-card">
+            <div class="label">📝 Описание</div>
+            <p style="color:var(--text-muted);font-size:0.92rem;">{{ program.description }}</p>
+        </div>
+    </div>
+
+    <!-- Требования: нумерованный + ненумерованный + вложенный -->
+    <div class="card" style="margin-top:2rem;">
+        <h3>📋 Требования программы</h3>
+        <div class="req-lists">
+            <div class="req-list-block">
+                <h4>Обязательные дисциплины</h4>
+                <ol>
+                    <li>Математический анализ</li>
+                    <li>Теория алгоритмов</li>
+                    <li>Базы данных
+                        <ul class="nested-list">
+                            <li>SQL</li>
+                            <li>PostgreSQL</li>
+                        </ul>
+                    </li>
+                    <li>Веб-разработка</li>
+                    <li>Операционные системы</li>
+                </ol>
+            </div>
+            <div class="req-list-block">
+                <h4>Навыки и компетенции</h4>
+                <ul>
+                    <li>Разработка веб-приложений
+                        <ul class="nested-list">
+                            <li>Frontend (HTML, CSS, JS)</li>
+                            <li>Backend (Python, Django)</li>
+                        </ul>
+                    </li>
+                    <li>Работа с системами контроля версий</li>
+                    <li>Командная разработка</li>
+                    <li>Написание технической документации</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <a href="#top" class="back-to-top">⬆ К началу страницы</a>
+</section>
+
+<hr class="divider">
+
+<!-- Раздел 2: Команда -->
+{% endblock %}

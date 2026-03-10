@@ -1,0 +1,137 @@
+{% extends 'main/base.html' %}
+{% block title %}Алгоритмическая задача{% endblock %}
+
+{% block content %}
+<div id="top" class="page-header">
+    <h1>Алгоритмическая <span class="accent">задача</span></h1>
+    <p>Задача про картины и купюры номиналом 500 у.е.</p>
+</div>
+
+<!-- Якорная навигация -->
+<nav class="anchor-nav">
+    <a href="#section1" class="anchor-btn">📋 Условие</a>
+    <a href="#section2" class="anchor-btn">💻 Решение</a>
+    <a href="#section3" class="anchor-btn">✅ Результат</a>
+    <a href="#top" class="anchor-btn">⬆ К началу</a>
+</nav>
+
+<!-- Раздел 1: Условие -->
+<section id="section1" class="section">
+    <h2 class="section-title">Раздел 1 — Условие задачи</h2>
+    <div class="card">
+        <p>
+            Митя хочет приобрести картины, однако у него есть купюры только номиналом <strong style="color:var(--accent)">500 у.е.</strong>
+        </p>
+        <p style="margin-top:1rem;">
+            Напишите программу, которая поможет определить, какие картины он может купить <strong>без получения сдачи</strong>
+            (то есть цена картины должна быть <em>кратна 500</em>).
+        </p>
+        <div style="margin-top:1.5rem;">
+            <h4 style="color:var(--accent);margin-bottom:0.75rem;">Формат ввода:</h4>
+            <ul style="padding-left:1.4rem;">
+                <li>На одной строке через запятую и пробел — данные о картинах: <code>Название - цена</code></li>
+                <li>Минимум одна картина</li>
+            </ul>
+            <h4 style="color:var(--accent);margin-top:1rem;margin-bottom:0.75rem;">Формат вывода:</h4>
+            <ul style="padding-left:1.4rem;">
+                <li>Названия картин, которые можно купить без сдачи</li>
+                <li>В алфавитном порядке, через запятую и пробел</li>
+            </ul>
+        </div>
+    </div>
+    <a href="#top" class="back-to-top">⬆ К началу страницы</a>
+</section>
+
+<hr class="divider">
+
+<!-- Раздел 2: Решение -->
+<section id="section2" class="section">
+    <h2 class="section-title">Раздел 2 — Код решения (Python)</h2>
+    <div class="card">
+        <p style="color:var(--text-muted);margin-bottom:1rem;">Ниже представлено решение на Python, встроенное в Django-приложение:</p>
+        <div class="code-block">def solve_paintings(paintings, bill=500):
+    """
+    Определяет картины, которые можно купить
+    купюрами по 500 у.е. без сдачи.
+    
+    :param paintings: список словарей {'name': str, 'price': int}
+    :param bill: номинал купюры (по умолчанию 500)
+    :return: отсортированный список названий картин
+    """
+    result = sorted(
+        [p['name'] for p in paintings if p['price'] % bill == 0],
+        key=lambda x: x.lower()
+    )
+    return result
+
+
+# Пример вызова:
+# paintings = [
+#     {'name': 'Чёрный квадрат', 'price': 23000},
+#     {'name': 'Ночь', 'price': 17000},
+#     {'name': 'Девятый вал', 'price': 25000},
+# ]
+# solve_paintings(paintings)
+# → ['Девятый вал', 'Ночь', 'Чёрный квадрат']</div>
+    </div>
+    <a href="#top" class="back-to-top">⬆ К началу страницы</a>
+</section>
+
+<hr class="divider">
+
+<!-- Раздел 3: Результат -->
+<section id="section3" class="section">
+    <h2 class="section-title">Раздел 3 — Данные и результат</h2>
+
+    <div class="algo-layout">
+        <div>
+            <h3 style="margin-bottom:1rem;font-family:var(--font-display);">Список картин</h3>
+            <table class="paintings-table">
+                <thead>
+                    <tr>
+                        <th>Название</th>
+                        <th>Цена (у.е.)</th>
+                        <th>Кратно 500?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in paintings %}
+                    <tr class="{% if p.price|divisibleby:500 %}affordable{% endif %}">
+                        <td>{{ p.name }}</td>
+                        <td>{{ p.price }}</td>
+                        <td>{% if p.price|divisibleby:500 %}✅ Да{% else %}❌ Нет{% endif %}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <div class="result-box">
+                <h3>✅ Ответ</h3>
+                <p>Картины, которые Митя может купить без сдачи:</p>
+                <p style="margin-top:1rem;font-size:1.1rem;font-weight:600;color:var(--accent);">
+                    {% if result %}
+                        {{ result_str }}
+                    {% else %}
+                        <em style="color:var(--text-muted)">Таких картин нет</em>
+                    {% endif %}
+                </p>
+            </div>
+
+            <div class="card" style="margin-top:1.5rem;">
+                <h4 style="color:var(--accent);margin-bottom:0.75rem;">Логика решения:</h4>
+                <ol style="padding-left:1.4rem;color:var(--text-muted);font-size:0.9rem;">
+                    <li>Перебираем все картины</li>
+                    <li>Проверяем: цена % 500 == 0</li>
+                    <li>Добавляем подходящие в список</li>
+                    <li>Сортируем по алфавиту</li>
+                    <li>Выводим через ", "</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <a href="#top" class="back-to-top">⬆ К началу страницы</a>
+</section>
+{% endblock %}
